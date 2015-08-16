@@ -13,7 +13,7 @@ repeat the same code for each `IO`.
 
 The second piece of functionality is creating a
 [HttpServer.jl](https://github.com/JuliaWeb/HttpServer.jl) `Server` for JSON data.
-This data can then be used in your browser, with something like (D3.js)[http://d3js.org/] for example,
+This data can then be used in your browser, with something like [D3.js](http://d3js.org/) for example,
 to display visualizations of program status. This has the advantage of separating
 visualization code and program code as well as making results available as soon as they
 are produced.
@@ -70,5 +70,5 @@ http://host:port/data and http://host:port/data?callback=callback. The former si
 data. The later uses the (JSONP)[https://en.wikipedia.org/wiki/JSONP] technique to work around same origin
 policy restrictions.
 
-For a full example of using Monitors.jl to visualize data with (D3.js)[http://d3js.org/] see the
-(`examples/cpu/`)[https://github.com/thomlake/Monitors.jl/tree/master/examples/cpu] directory.
+For a full example of using Monitors.jl to visualize CPU usage data with [D3.js](http://d3js.org/)
+see the (`examples/cpu/`)[https://github.com/thomlake/Monitors.jl/tree/master/examples/cpu] directory.
