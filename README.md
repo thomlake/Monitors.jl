@@ -11,7 +11,7 @@ using a `Monitor` to log is when logging to multiple `IO`s. A `Monitor` will
 handle the multiple sources behind the scenes without requiring the user
 repeat the same code for each `IO`.
 
-The second piece of functionality is a simple HttpServer for serving JSON data.
+The second piece of functionality is a creating a `Server` (using HttpServer.jl) for JSON data.
 This data can then be used in your browser, with something like D3.js for example,
 to display visualizations of program status. This has the advantage of separating
 visualization code and program code as well as making results available as soon as they
