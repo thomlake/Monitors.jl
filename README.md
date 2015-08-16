@@ -76,7 +76,8 @@ displays the number of requests made to the server, http://host:port/ping/.
 The second and third endpoints are for serving JSON data. By default these are available at
 http://host:port/data and http://host:port/data?callback=callback. The former simply serves raw JSON
 data. The later uses the [JSONP](https://en.wikipedia.org/wiki/JSONP) technique to work around same origin
-policy restrictions.
+policy restrictions. The data portion of the above URLs can be changed by passing a `name` parmeter to
+`run_server`, i.e., `run_server(monitor, name="some-name")`.
 
 For a full example of using Monitors.jl to visualize CPU usage data with [D3.js](http://d3js.org/)
 see the [`examples/cpu/`](https://github.com/thomlake/Monitors.jl/tree/master/examples/cpu) directory.
