@@ -80,7 +80,7 @@ function run_server(monitor::Monitor; name::String="data", host::Base.IpAddr=IPv
         if ismatch(ping, req.resource)
             count += 1
             monitor.verbose_server && monitor(:info, "(HTTP) ping: $count")
-            Response("reply $count")
+            Response("$count")
         elseif ismatch(raw, req.resource)
             count += 1
             monitor.verbose_server && monitor(:info, "(HTTP) raw: $count")
