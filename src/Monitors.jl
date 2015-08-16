@@ -68,7 +68,7 @@ function Base.close(monitor::Monitor)
     end
 end
 
-function run_server(monitor::Monitor; name::String="data", port::Int=8000)
+function run_server(monitor::Monitor; name::String="data", host::Base.IpAddr=IPv4(127,0,0,1), port::Int=8000)
     const ping = r"^/ping/"
     const raw = Regex("^/$name/")
     const data = Regex("^/$name?.*")
@@ -103,7 +103,7 @@ function run_server(monitor::Monitor; name::String="data", port::Int=8000)
 
     function runner(server)
         try
-            run(server, host=IPv4(127,0,0,1), port=port)
+            run(server, host=host, port=port)
         catch err
             if isa(err, InterruptException)
                 monitor.verbose_server && monitor(:info, "(HTTP) server shutting down")

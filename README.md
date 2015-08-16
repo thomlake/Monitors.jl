@@ -24,7 +24,7 @@ Monitors.jl is unregistered, to install use
 julia> Pkg.clone("https://github.com/thomlake/Monitors.jl.git")
 ```
 
-# Logging
+## Logging
 Logging with Monitors.jl is fairly unsophisticated. Essentially it is just a multiple
 output `write` statement with a bit of markup for logging levels (`:info`, `:warn`, `:erro`).
 
@@ -40,6 +40,24 @@ monitor(:erro, "error")
 
 By default a `Monitor` will always log to `STDOUT` for levels `:info` and `:warn` and `STDERR` for `:erro`.
 To suppress this behavior simply instantiate the `Monitor` with `monitor = Monitor(false)`.
+
 When logging to `STDOUT` or `STDERR`, the colors green, yellow, and red are used to denote `:info`, `:warn`, and `:erro`.
-In all other case the logging levels `:info`, `:warn`, and `:erro` are prefixed by [INFO], [WARN], or [ERRO].
+In all other cases the logging levels `:info`, `:warn`, and `:erro` are prefixed by [INFO], [WARN], or [ERRO].
 To have colors work outside of the REPL, Julia needs to be started with `$ julia --color=yes myscript.jl`.
+
+## Serving JSON
+To launch a `Monitor` based HttpServer use `run_server(monitor)`.
+Data can be added to the monitor using `Dict` like syntax.
+
+```julia
+monitor[:sqrt] = [0.0]
+for i = 1:100
+    push!(monitor[:sqrt], sqrt(i))
+end
+monitor[:samples] = randn(100)
+```
+
+The served JSON object will now have `.sqrt` and `.samples` fields.
+
+By default the server runs at http://127.0.0.1:8000/. To change this simply call `run_server`
+with the desired options `run_server(monitor, host=ip"ip.addr.you.want", port=somenumber)`.
