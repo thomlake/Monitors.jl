@@ -34,11 +34,19 @@ monitor = Monitor()
 register(monitor, "myprog.log")
 monitor("It is now $(now())")
 monitor(:info, "information")
-minitor(:warn, "warning")
+monitor(:warn, "warning")
 monitor(:erro, "error")
 ```
 
-By default a `Monitor` will always log to `STDOUT` for levels `:info` and `:warn` and `STDERR` for `:erro`.
+Contents of `myprog.log`
+```
+It is now 2015-08-16T13:59:43
+[INFO] information
+[WARN] warning
+[ERRO] error
+```
+
+By default a `Monitor` will also log to `STDOUT` for levels `:info` and `:warn` and `STDERR` for `:erro`.
 To suppress this behavior simply instantiate the `Monitor` with `monitor = Monitor(false)`.
 
 When logging to `STDOUT` or `STDERR`, the colors green, yellow, and red are used to denote `:info`, `:warn`, and `:erro`.

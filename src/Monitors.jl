@@ -38,6 +38,7 @@ function Base.call(monitor::Monitor, str::String, ending::Char='\n')
     if monitor.usestd
         write(STDOUT, msg)
     end
+    nothing
 end
 
 const colormap = Dict(:erro=>:red, :warn=>:yellow, :info=>:green)
@@ -56,6 +57,7 @@ function Base.call(monitor::Monitor, level::Symbol, str::String, ending::Char='\
             print_with_color(color, STDOUT, "$msg")
         end
     end
+    nothing
 end
 
 function Base.close(monitor::Monitor)
