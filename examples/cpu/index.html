@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <style type="text/css">
+            body, html {
+                font-family: "Helvetica Neue", Helvetica, sans-serif;
+                margin:0;
+                padding:0;
+                color:#000;
+            }
+            h1 {
+                font-size: 64px;
+                font-weight: 300;
+                letter-spacing: -2px;
+            }
+            #container {
+                margin: 100px;
+            }
+            #plot {
+                width: 50%;
+                height: 50%;
+                min-width: 500px;
+            }
+            .line {
+                fill: none;
+                stroke: #AEAEAF;
+                stroke-width: 1px;
+            }
+            .domain {
+                fill: none;
+                stroke: #AEAEAF;
+                fill-opacity: 0.0;
+                stroke-width: 2px;
+            }
+        </style>
+        <script src="script.js"></script>
+        <script>
+        function loadAndDraw() {
+            $.getJSON("http://127.0.0.1:8000/data?callback=?",
+                function(json) {
+                    var plot = lineGraph()
+                        .selection("#plot")
+                        .data(json.cpu);
+                    plot();
+                }
+            );
+        }
+        $(document).ready(loadAndDraw);
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h1>CPU Usage</h1>
+            <div id="plot"></div>
+        </div>
+    </body>
+</html>
