@@ -46,7 +46,7 @@ function Base.call(monitor::Monitor, level::Symbol, str::String, ending::Char='\
     msg = "$str$ending"
     prefix = uppercase(string(level))
     for io in monitor.registered_ios
-        write(io, "[$prefix]$msg")
+        write(io, "[$prefix] $msg")
     end
     if monitor.usestd
         color = get(colormap, level, :normal)
