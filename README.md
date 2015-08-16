@@ -3,13 +3,13 @@ Monitors.jl is a Julia package for making program status information available t
 It was designed for use in conjunction with long running processes such as optimization, inference, or simulation.
 
 ## Monitoring
-Monitors.jl provides a Monitor type to handle program monitoring.
-A Monitor instance has two distinct pieces of functionality.
+Monitors.jl provides a `Monitor` type to handle program monitoring.
+A `Monitor` instance has two distinct pieces of functionality.
 
 The first is standard logging functionality. The primary advantage of
-using a Monitor to log is when logging to multiple IOs. A Monitor will
+using a `Monitor` to log is when logging to multiple `IO`s. A `Monitor` will
 handle the multiple sources behind the scenes without requiring the user
-repeat the same code for each IO.
+repeat the same code for each `IO`.
 
 The second piece of functionality is a simple HttpServer for serving JSON data.
 This data can then be used in your browser, with something like D3.js for example,
@@ -37,8 +37,8 @@ minitor(:warn, "warning")
 monitor(:erro, "error")
 ```
 
-By default Monitor instances always log to STDOUT for levels `:info` and `:warn` and STDERR for `:erro`.
-To suppress this behavior simply pass `false` when instantiating the Monitor, `monitor = Monitor(false)`.
-When logging to files, logging levels `:info`, `:warn`, and `:erro` are denoted by [INFO], [WARN], or [ERRO].
-When logging to STDOUT or STDERR, the colors green, yellow, and red are used. To have colors work outside of the
-REPL, Julia needs to be started with `$ julia --color=yes myscript.jl`.
+By default a `Monitor` will always log to `STDOUT` for levels `:info` and `:warn` and `STDERR` for `:erro`.
+To suppress this behavior simply instantiate the `Monitor` with `monitor = Monitor(false)`.
+When logging to `STDOUT` or `STDERR`, the colors green, yellow, and red are used to denote `:info`, `:warn`, and `:erro`.
+In all other case the logging levels `:info`, `:warn`, and `:erro` are prefixed by [INFO], [WARN], or [ERRO].
+To have colors work outside of the REPL, Julia needs to be started with `$ julia --color=yes myscript.jl`.
