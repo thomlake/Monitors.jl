@@ -67,7 +67,7 @@ monitor[:samples] = randn(100)
 
 The served JSON object will now have `.sqrt` and `.samples` fields.
 
-By default the server runs at `http://127.0.0.1:8000/``. To change this simply call `run_server`
+By default the server runs at `http://127.0.0.1:8000/`. To change this simply call `run_server`
 with the desired options `run_server(monitor, host=ip"ip.addr.you.want", port=somenumber)`.
 
 The server instance has three endpoints. The first is a simple test endpoint which
