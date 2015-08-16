@@ -61,3 +61,14 @@ The served JSON object will now have `.sqrt` and `.samples` fields.
 
 By default the server runs at http://127.0.0.1:8000/. To change this simply call `run_server`
 with the desired options `run_server(monitor, host=ip"ip.addr.you.want", port=somenumber)`.
+
+The server instance has three endpoints. The first is a simple test endpoint which
+displays the number of requests made to the server, http://host:port/ping/.
+
+The second and third endpoints are for serving JSON data. By default these are available at
+http://host:port/data and http://host:port/data?callback=callback. The former simply serves raw JSON
+data. The later uses the (JSONP)[https://en.wikipedia.org/wiki/JSONP] technique to work around same origin
+policy restrictions.
+
+For a full example of using Monitors.jl to visualize data with D3.js see the
+(`examples/cpu/`)[https://github.com/thomlake/Monitors.jl/tree/master/examples/cpu] directory.
